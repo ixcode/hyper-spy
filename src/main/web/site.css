@@ -1,0 +1,7 @@
+body {
+    font-family: Verdana;
+}
+
+input.uri {
+    width: 30em;
+}
