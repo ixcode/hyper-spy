@@ -5,3 +5,7 @@ body {
 input.uri {
     width: 30em;
 }
+
+input.header {
+    width :20em;
+}

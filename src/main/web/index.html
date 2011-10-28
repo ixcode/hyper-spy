@@ -3,16 +3,39 @@
 <html>
 <head>
     <title>HyperSpy Application</title>
-    <link rel="stylesheet" href="./site.css">
+    <link type="text/css" rel="stylesheet" href="./site.css">
+    <link type="text/css" rel="stylesheet" href="./response.css">
 </head>
 <body>
+
 <h1>Welcome to Hyper Spy!</h1>
+
 <p>This application allows you to interact with a Hypermedia API in interesting ways</p>
 
-<form action="/proxy" method="get">
-    <p><label for="uri">Enter a URI...</label></p>
-    <input name="uri" class="uri" type="text"  ></input>
-    <input type="submit" value="GO!"/>
-</form>
+<div id="request">
+    <form action="/proxy" method="get">
+        <p><label for="uri">Go someplace...</label></p>
+        <input name="uri" class="uri" type="text" />
+        <input name="go" type="button" value="GO!"/>
+
+        <div id="headers">
+            <label for="accept">Accept: </label>
+            <select name="accept-header">
+                <option value="application/json" selected="true">application/json</option>
+                <option value="application/xml">application/xml</option>
+                <option value="application/xhtml">application/xhtml</option>
+                <option value="text/html">text/html</option>
+            </select>
+        </div>
+    </form>
+</div>
+<div id="response">
+   <div class="body"></div>
+</div>
+
+<script type="text/javascript" src="response.js"></script>
+<script type="text/javascript" src="./request.js"></script>
+<script type="text/javascript" src="./navigator.js"></script>
+
 </body>
 </html>

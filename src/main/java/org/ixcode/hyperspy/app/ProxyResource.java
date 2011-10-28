@@ -3,7 +3,6 @@ package org.ixcode.hyperspy.app;
 import ixcode.platform.http.client.Http;
 import ixcode.platform.http.protocol.request.Request;
 import ixcode.platform.http.protocol.response.ResponseBuilder;
-import ixcode.platform.http.representation.HypermediaResourceBuilder;
 import ixcode.platform.http.representation.Representation;
 import ixcode.platform.http.representation.TransformHypermediaToJson;
 import ixcode.platform.http.server.resource.Resource;
@@ -12,12 +11,9 @@ import ixcode.platform.serialise.JsonSerialiser;
 import org.apache.log4j.Logger;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 
 import static ixcode.platform.http.protocol.UriFactory.uri;
-import static java.util.Arrays.asList;
-import static org.ixcode.hyperspy.app.ProxyResource.ExceptionHypermedia.exceptionHypermedia;
+import static ixcode.platform.http.representation.ExceptionHypermedia.exceptionHypermedia;
 
 public class ProxyResource implements Resource {
 
@@ -46,33 +42,4 @@ public class ProxyResource implements Resource {
         }
     }
 
-    public static class ExceptionHypermedia extends HypermediaResourceBuilder<ExceptionHypermedia> {
-
-        private ExceptionReport exception;
-
-        public static ExceptionHypermedia exceptionHypermedia(Exception e) {
-            return new ExceptionHypermedia(e);
-        }
-
-        private ExceptionHypermedia(Exception exception) {
-            super("error");
-            this.exception = new ExceptionReport(exception);
-        }
-    }
-
-    public static class ExceptionReport {
-
-        public final String type;
-        public final String message;
-        private List<String> stackTrace;
-
-        public ExceptionReport(Exception exception) {
-            type = exception.getClass().getName();
-            message = exception.getMessage();
-            stackTrace = new ArrayList<String>();
-            for (StackTraceElement element : asList(exception.getStackTrace())) {
-                stackTrace.add(element.toString());
-            }
-        }
-    }
 }
