@@ -2,7 +2,7 @@ var navigator = navigator || {};
 
 navigator.http = navigator.http || {};
 
-navigator.http.GET = function(uri) {
+navigator.http.GET = function(uri, callback) {
     console.log("GET " + uri + " HTTP/1.1");
 
 
@@ -10,22 +10,27 @@ navigator.http.GET = function(uri) {
     request.open("GET", uri);
     request.onreadystatechange = function (event) {
         if (request.readyState == 4) {
-            if (request.status == 200)
-                console.log(request.responseText)
-            else
-                console.log("Error: " +  request.status + " : " + request.statusText);
+            callback(navigator.http.response(request.status, request.statusText,
+                                             request.getAllResponseHeaders(), request.responseText))
         }
     };
     request.send(null);
 }
 
-navigator.http.response = function(body) {
+navigator.http.response = function(status, statusText, headers, responseText) {
 
     var interface = {
+        log : function() {
+            console.log("HTTP/1.1 " + status + " " + statusText);
+            console.log(headers);
+            console.log(responseText);
+        },
+
         body : function() {
-            return body;
+            return responseText;
         }
     }
+
 
     return interface;
 }

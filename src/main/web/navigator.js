@@ -8,8 +8,14 @@ navigator.init = function() {
     var responseView = navigator.response.connectToDom(document);
 
     requestView.onGoButton_click(function() {
-        navigator.http.GET(requestView.uri());
-    })
+        var requestUri = "http://localhost:9393/proxy?uri=" +  requestView.uri();
+        navigator.http.GET(requestUri, handleResponse);
+    });
+
+    var handleResponse = function(response) {
+        response.log();
+        responseView.setBodyText(response.body());
+    };
 }
 
 window.onLoad = navigator.init();
