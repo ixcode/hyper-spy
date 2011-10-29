@@ -904,7 +904,10 @@
         <root url="jar://$PROJECT_DIR$/../../../platform/http/lib/production/jetty-util-7.2.2.v20101205.jar!/" />
       </CLASSES>
       <JAVADOC />
-      <SOURCES />
+      <SOURCES>
+        <root url="jar://$PROJECT_DIR$/../../../platform/core/lib/production/json-parser.jar!/" />
+        <root url="file://$PROJECT_DIR$/../../../json-antlr/src" />
+      </SOURCES>
     </library>
   </component>
 </project>
