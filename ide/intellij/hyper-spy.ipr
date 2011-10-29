@@ -861,6 +861,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../json-antlr/JSON Parser.iml" filepath="$PROJECT_DIR$/../../../json-antlr/JSON Parser.iml" />
       <module fileurl="file://$PROJECT_DIR$/hyper-spy.iml" filepath="$PROJECT_DIR$/hyper-spy.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../platform/ide/intellij/platform-core.iml" filepath="$PROJECT_DIR$/../../../platform/ide/intellij/platform-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../platform/ide/intellij/platform-http.iml" filepath="$PROJECT_DIR$/../../../platform/ide/intellij/platform-http.iml" />
@@ -874,6 +875,7 @@
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../json-antlr" vcs="Git" />
   </component>
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
   <component name="com.sixrr.metrics.MetricsReloaded">

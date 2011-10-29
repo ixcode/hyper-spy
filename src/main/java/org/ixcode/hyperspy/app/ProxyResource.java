@@ -44,7 +44,7 @@ public class ProxyResource implements Resource {
 
             respondWith.status().ok()
                        .contentType().json()
-                       .body(representation.<String>getEntity());
+                       .body(response);
 
         } catch (Exception e) {
             log.error("Could not execute proxy request", e);
@@ -63,8 +63,8 @@ public class ProxyResource implements Resource {
           .append("<tbody>");
 
         for (Map.Entry<String, List<String>> entry : httpHeaders.entrySet()) {
-            sb.append("<td>").append(entry.getKey()).append("</td>")
-              .append("<td>").append(printCollection(entry.getValue())).append("</td>");
+            sb.append("<tr><td>").append(entry.getKey()).append("</td>")
+              .append("<td>").append(printCollection(entry.getValue())).append("</td></tr>");
         }
 
         sb.append("</tbody>")
@@ -72,15 +72,15 @@ public class ProxyResource implements Resource {
           .append("</div>");
 
         sb.append(printJsonObjectAsHtml(jsonObject));
-
+        log.info(sb.toString());
         return sb.toString();
     }
 
     private static String printJsonObjectAsHtml(JsonObject jsonObject) {
         final StringBuilder sb = new StringBuilder();
 
-        sb.append("<div class='json>")
-          .append("\n{\n")
+        sb.append("<div class='json'>")
+          .append("{")
           .append("<ul class='json-object'>");
 
         jsonObject.apply(new Action<JsonPair>() {
@@ -97,7 +97,7 @@ public class ProxyResource implements Resource {
         });
 
         sb.append("</ul>");
-        sb.append("\n}\n");
+        sb.append("}");
         sb.append("</div>");
 
         return sb.toString();
