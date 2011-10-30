@@ -113,7 +113,7 @@ public class ProxyResource implements Resource {
             if (stringValue.startsWith("http://")) {
                  stringValue = parseLink(stringValue);
             } else {
-                stringValue = (String)value;
+                stringValue = "\"" + (String)value + "\"";
             }
         } else if (value instanceof Number) {
             type = "number";

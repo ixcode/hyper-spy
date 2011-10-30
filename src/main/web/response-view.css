@@ -1,0 +1,38 @@
+#response {
+    margin: 20px;
+    border: 2px solid #778899;
+    font-family: courier;
+    font-size: smaller;
+}
+
+#response .body {
+    padding:  5px;
+}
+
+#response .body.empty {
+    background: #d3d3d3;
+    color: #483d8b;
+}
+
+#response .body ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 25px;
+}
+
+#response .http-headers {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#response .json {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+#response .json-property {
+    font-weight: bold;
+}
