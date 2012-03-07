@@ -173,7 +173,12 @@
           <option name="m_ignoreTestCases" value="true" />
           <option name="m_ignoreIgnoreParameter" value="true" />
         </inspection_tool>
-        <inspection_tool class="EmptyClass" enabled="true" level="WARNING" enabled_by_default="true" />
+        <inspection_tool class="EmptyClass" enabled="true" level="WARNING" enabled_by_default="true">
+          <option name="ignorableAnnotations">
+            <value />
+          </option>
+          <option name="ignoreClassWithParameterization" value="false" />
+        </inspection_tool>
         <inspection_tool class="EmptyFinallyBlock" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="EmptyMethod" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="EmptyStatementBody" enabled="false" level="WARNING" enabled_by_default="false">
@@ -207,6 +212,7 @@
         <inspection_tool class="Fix shebang" enabled="false" level="WARNING" enabled_by_default="false">/bin/sh#/bin/bash</inspection_tool>
         <inspection_tool class="ForCanBeForeach" enabled="false" level="WARNING" enabled_by_default="false">
           <option name="REPORT_INDEXED_LOOP" value="true" />
+          <option name="ignoreUntypedCollections" value="false" />
         </inspection_tool>
         <inspection_tool class="FtlCallsInspection" enabled="false" level="ERROR" enabled_by_default="false" />
         <inspection_tool class="FtlDeprecatedBuiltInsInspection" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -321,9 +327,7 @@
         <inspection_tool class="JSDeprecatedSymbols" enabled="false" level="INFO" enabled_by_default="false" />
         <inspection_tool class="JSDuplicatedDeclaration" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="JSLowercasedConstructorCall" enabled="false" level="WARNING" enabled_by_default="false" />
-        <inspection_tool class="JSUndeclaredVariable" enabled="false" level="INFO" enabled_by_default="false">
-          <option name="myCheckGlobalDefinitions" value="false" />
-        </inspection_tool>
+        <inspection_tool class="JSUndeclaredVariable" enabled="false" level="INFO" enabled_by_default="false" />
         <inspection_tool class="JSUnnecessarySemicolon" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="JSUnresolvedFunction" enabled="false" level="INFO" enabled_by_default="false" />
         <inspection_tool class="JSUnresolvedVariable" enabled="false" level="INFO" enabled_by_default="false" />
@@ -421,6 +425,7 @@
         <inspection_tool class="MissingMnemonic" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="MissingOverrideAnnotation" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="ignoreObjectMethods" value="true" />
+          <option name="ignoreAnonymousClassMethods" value="false" />
         </inspection_tool>
         <inspection_tool class="MultipleTopLevelClassesInFile" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="NewStringBufferWithCharArgument" enabled="false" level="WARNING" enabled_by_default="false" />

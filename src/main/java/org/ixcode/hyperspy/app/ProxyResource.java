@@ -7,7 +7,7 @@ import ixcode.platform.http.protocol.response.ResponseBuilder;
 import ixcode.platform.http.representation.Representation;
 import ixcode.platform.http.representation.TransformHypermediaToJson;
 import ixcode.platform.http.server.resource.Resource;
-import ixcode.platform.http.server.resource.ResourceMap;
+import ixcode.platform.http.server.resource.ResourceHyperlinkBuilder;
 import ixcode.platform.json.JsonObject;
 import ixcode.platform.json.JsonPair;
 import ixcode.platform.json.JsonParser;
@@ -31,10 +31,8 @@ public class ProxyResource implements Resource {
     private JsonSerialiser serialiser = new JsonSerialiser(new TransformHypermediaToJson());
     private JsonParser jsonParser = new JsonParser();
 
-
-    public void GET(Request request, ResponseBuilder respondWith, ResourceMap resourceMap) {
+    @Override public void GET(Request request, ResponseBuilder respondWith, ResourceHyperlinkBuilder hyperlinkBuilder) {
         URI uri = uri(request.parameters.getFirstValueOf("uri"));
-
 
         try {
             Representation representation = http.GET().from(uri);
@@ -109,11 +107,11 @@ public class ProxyResource implements Resource {
 
         if (value instanceof String) {
             type = "string";
-            stringValue = (String)value;
+            stringValue = (String) value;
             if (stringValue.startsWith("http://")) {
-                 stringValue = parseLink(stringValue);
+                stringValue = parseLink(stringValue);
             } else {
-                stringValue = "\"" + (String)value + "\"";
+                stringValue = "\"" + (String) value + "\"";
             }
         } else if (value instanceof Number) {
             type = "number";
@@ -138,5 +136,6 @@ public class ProxyResource implements Resource {
     private static boolean appendLink(StringBuilder sb, String value) {
         return false;
     }
+
 
 }
