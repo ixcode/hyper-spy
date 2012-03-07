@@ -1,1 +1,10 @@
 This is a hypermedia client that allows you to query a hypermedia api and explore it.
+
+We can deploy it to Heroku using the Procfile.
+
+git push heroku master
+
+heroku logs  (Will show you the output logs)
+
+You need to install heroku first (https://toolbelt.herokuapp.com/osx)
+
