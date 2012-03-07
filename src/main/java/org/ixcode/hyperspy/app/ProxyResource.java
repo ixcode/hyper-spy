@@ -8,6 +8,7 @@ import ixcode.platform.http.representation.Representation;
 import ixcode.platform.http.representation.TransformHypermediaToJson;
 import ixcode.platform.http.server.resource.Resource;
 import ixcode.platform.http.server.resource.ResourceHyperlinkBuilder;
+import ixcode.platform.json.JsonArray;
 import ixcode.platform.json.JsonObject;
 import ixcode.platform.json.JsonPair;
 import ixcode.platform.json.JsonParser;
@@ -87,10 +88,17 @@ public class ProxyResource implements Resource {
                   .append("<span class='json-property'>")
                   .append(item.key).append("</span>").append(": ");
 
-                appendJsonValue(sb, item.value);
-
+                if (item.value instanceof JsonArray) {
+                    appendJsonArray(sb, item.value);
+                } else {
+                    appendJsonValue(sb, item.value);
+                }
+                if (tail.size() >0) {
+                    sb.append(",");
+                }
                 sb.append("</li>");
             }
+
 
         });
 
@@ -99,6 +107,29 @@ public class ProxyResource implements Resource {
         sb.append("</div>");
 
         return sb.toString();
+    }
+
+    private static void appendJsonArray(final StringBuilder sb, Object value) {
+        sb.append("[");
+        sb.append("<ul class=\"json-array\">");
+        
+        JsonArray jsonArray = (JsonArray) value;
+
+        jsonArray.apply(new Action<Object>() {
+            @Override public void to(Object item, Collection<Object> tail) {
+                sb.append("<li>");
+
+                appendJsonValue(sb, item);
+                if (tail.size() > 0) {
+                    sb.append(",");
+                }
+                sb.append("</li>");
+
+            }
+        });
+
+        sb.append("</ul>");
+        sb.append("]");
     }
 
     private static void appendJsonValue(StringBuilder sb, Object value) {
