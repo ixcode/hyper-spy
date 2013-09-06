@@ -23,7 +23,8 @@ public class HyperSpyApp {
         String webRoot = (useDefult) ? "./" : args[2];
 
         RequestDispatcher requestDispatcher = requestDispatcher(
-                format("http://%s:%d", hostname, port), withRouteMap(), json);
+                format("http://%s:%d", hostname, port),
+                withRouteMap(), json);
 
         new HttpServer(HyperSpyApp.class.getSimpleName(), hostname, port, requestDispatcher)
                 .servingStaticContentFrom(webRoot)
